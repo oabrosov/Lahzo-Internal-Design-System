@@ -1,0 +1,19 @@
+{
+  "name": "lahzo-design-system",
+  "version": "1.1.0",
+  "description": "Lahzo Internal Design System — Tailwind CSS v4 + daisyUI v5, Lahzo Light theme. Source of truth, build, validator, and a hosted component showcase.",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "validate": "python3 scripts/validate.py docs/",
+    "serve": "python3 -m http.server 8080 --directory docs",
+    "check": "npm run build && npm run validate"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "daisyui": "^5.5.20",
+    "tailwindcss": "^4.3.0"
+  }
+}

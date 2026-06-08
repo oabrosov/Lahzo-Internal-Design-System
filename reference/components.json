@@ -1,0 +1,490 @@
+{
+  "designSystem": {
+    "name": "Lahzo Internal Design System",
+    "stack": "Tailwind CSS v4 + daisyUI v5",
+    "theme": "Lahzo — Light Theme (set via data-theme on <html>)",
+    "note": "Code-only reference. Desktop internal tools. Every UI element uses a daisyUI component configured with the Lahzo theme classes, a defined text-* utility, and the spacing/sizing/icon scales. Three tiers: canonical components + specified essentials (Card/Input/Select/Textarea/Badge/Avatar/Tooltip) use the specs here; anything else uses base daisyUI + the Lahzo theme, no bespoke CSS. Dark mode is out of scope. Full prose specs live in rules/design-system-rules.md; build recipes in reference/playbooks.md."
+  },
+  "components": {
+    "Button": {
+      "base": ".btn",
+      "styles": {
+        "Solid": {
+          "colors": [
+            "btn-neutral",
+            "btn-primary",
+            "btn-secondary",
+            "btn-success",
+            "btn-error"
+          ],
+          "note": "default to neutral/primary/secondary; success+error are edge-case only"
+        },
+        "Outline": {
+          "colors": [
+            "btn-outline",
+            "btn-outline btn-success",
+            "btn-outline btn-error"
+          ],
+          "note": "opt-in ONLY when the user explicitly asks; neutral/success/error only"
+        },
+        "Icon": {
+          "classes": [
+            "btn-ghost"
+          ],
+          "note": "icon-only square; always include aria-label"
+        },
+        "Ghost": {
+          "classes": [
+            "btn-ghost"
+          ]
+        },
+        "Link": {
+          "classes": [
+            "btn-link"
+          ],
+          "note": "base-content text + underline + ph-arrow-square-out icon adjacent",
+          "underline": "text only; icon-links wrap text in a <span> (theme uses :has() so the icon is never underlined)"
+        }
+      },
+      "sizes": {
+        "xs": "btn-xs (24px)",
+        "sm": "btn-sm (32px)",
+        "md": "default (40px)",
+        "lg": "btn-lg (48px)"
+      },
+      "states": [
+        "default",
+        "hover (10% darker)",
+        "active (20% darker)",
+        "focus (ring)",
+        "disabled (50% opacity)"
+      ],
+      "textStyle": "text-button",
+      "banned": [
+        "btn-soft",
+        "btn-dash",
+        "btn-accent",
+        "btn-info",
+        "btn-warning (solid)",
+        "btn-outline btn-primary/secondary/warning/info/accent"
+      ],
+      "iconButton": "btn-ghost btn-square (square hit/hover area: 40/32/24 for md/sm/xs) + aria-label; tooltip when meaning isn't obvious",
+      "ghostStates": "transparent at rest; hover = base-content 10%; pressed = base-content 20% (theme-provided)",
+      "hierarchy": {
+        "primary": "btn-primary — single main action per surface",
+        "secondary": "btn-secondary — DEFAULT for any labeled non-primary action. Includes: page toolbar actions (Refresh, Queue, Export, New), sidebar filter chips (Flagged, Spot check), sort buttons (Newest), Cancel/Back/Skip, filter Clear, dialog secondaries. If you're about to use btn-ghost on a labeled button, use btn-secondary instead.",
+        "neutralSolid": "btn-neutral — high-emphasis dark when not the primary",
+        "tertiary": "btn-ghost — ONLY for icon-only utility controls (close ph-x, copy, kebab, row-level icons). Never for a labeled action of any weight.",
+        "link": "btn-link — inline text CTAs",
+        "edgeCase": "btn-success/btn-error — only when success/danger semantics genuinely matter"
+      }
+    },
+    "Dropdown": {
+      "base": ".dropdown",
+      "positions": [
+        "dropdown-bottom",
+        "dropdown-top"
+      ],
+      "bannedPositions": [
+        "dropdown-left",
+        "dropdown-right",
+        "dropdown-start",
+        "dropdown-center",
+        "dropdown-end"
+      ],
+      "bannedFeatures": [
+        "dropdown-hover",
+        "dropdown-open"
+      ],
+      "triggerToMenuGap": "4px",
+      "menu": {
+        "fill": "base-100",
+        "border": "1.5px base-300",
+        "padding": "8px (p-2)"
+      },
+      "menuItem": {
+        "height": 32,
+        "states": {
+          "default": "transparent, base-content text",
+          "hover": "base-200 bg",
+          "active": "primary @ 40% bg tint, base-content text",
+          "disabled": "50% opacity"
+        }
+      }
+    },
+    "Modal": {
+      "base": ".modal / .modal-box",
+      "width": 480,
+      "padding": 24,
+      "title": "text-h2",
+      "body": "text-body @ opacity 0.8",
+      "titleToBodyGap": 16,
+      "contentToActionsGap": 48,
+      "closeButton": "btn-ghost btn-sm with ph-x, top-right",
+      "footer": {
+        "cancel": "btn-secondary",
+        "confirm": "btn-primary",
+        "gap": 16,
+        "align": "right"
+      },
+      "rules": [
+        "always closable (ESC / close button / backdrop)",
+        "one primary action max",
+        "title is text-h2 never larger"
+      ]
+    },
+    "Navbar": {
+      "base": "custom .navbar",
+      "height": 64,
+      "structure": "Brand (Lahzo logo + 1.5px divider + tool name) | Tabs | flex-1 spacer | Right (search + avatar)",
+      "mandatory": [
+        "Lahzo SVG logo",
+        "1.5px×16px base-300 divider",
+        "tool name (font-display text-2xl)"
+      ],
+      "tabStyles": {
+        "tabs-box": "default — active tab neutral fill + white text",
+        "tabs-border": "alternative — active tab base-content underline"
+      },
+      "logo": {
+        "header": "assets/lahzo-wordmark-navy.svg via <img width=78 height=16> — ALWAYS 78x16, never scaled",
+        "footer": "assets/lahzo-mark-navy.svg — footers only",
+        "currentColor": "assets/lahzo-wordmark.svg / lahzo-mark.svg — inline to inherit text color (e.g. white on a dark footer)"
+      },
+      "allowedElements": [
+        "brand (logo + tool name)",
+        "nav tabs",
+        "search input",
+        "user avatar",
+        "navigation dropdown (e.g. user/workspace menu)"
+      ],
+      "forbidden": "no action buttons (Refresh, Save, Archive, Export, icon-action toolbars), no status text/counters/taglines/widgets — page-level actions go into a page toolbar, not the header",
+      "tabAlignment": "vertically centered: text at navbar center; underline (active tab border-bottom) sits on the navbar's 1.5px bottom border, continuous with the header separator",
+      "defaultOnEveryScreen": true,
+      "canonicalRecipe": {
+        "nav": "navbar bg-base-100 h-16 px-6 gap-6 shrink-0 py-0 (default items-center)",
+        "brand": "flex items-center gap-4 shrink-0 — wordmark img 78x16, 1.5px divider, font-display text-2xl tool name",
+        "tablist": "tabs tabs-border self-stretch — fills navbar height",
+        "tabAnchor": "tab text-button h-full + data-screen=… ; active gets tab-active",
+        "separator": "<div class='h-[1.5px] bg-base-300 shrink-0'> right under the navbar continues the line"
+      },
+      "actionsForbidden": "no Refresh/Save/Archive/Export/etc. in the header — page-level actions go in a page toolbar below"
+    },
+    "Tabs": {
+      "base": ".tabs",
+      "allowed": [
+        "tabs tabs-border",
+        "tabs tabs-box",
+        "tabs tabs-border + tab-content"
+      ],
+      "banned": [
+        "tabs-lift",
+        "tabs-xs/sm/lg/xl",
+        "tabs-bottom",
+        "bare tabs without a style class"
+      ],
+      "height": 40,
+      "textStyle": "text-button"
+    },
+    "Breadcrumbs": {
+      "base": ".breadcrumbs",
+      "textStyle": "Body (text-sm)",
+      "separator": "/ at 0.5 opacity",
+      "linkItems": "base-content @ 0.8 opacity, no underline",
+      "currentItem": "base-content full opacity, not a link",
+      "itemGap": 12,
+      "banned": [
+        "underlined breadcrumb links",
+        "custom separators (chevrons/dots)"
+      ]
+    },
+    "Pagination": {
+      "base": ".join + .join-item.btn",
+      "activePage": "btn-active (neutral fill, white text)",
+      "patterns": [
+        "numbered (« 1 2 3 4 »)",
+        "compact (« Page 22 of 100 »)"
+      ]
+    },
+    "Menu": {
+      "base": ".menu",
+      "note": "Sidebar/nav list — distinct from the dropdown popup menu",
+      "rowHeight": 32,
+      "title": ".menu-title (text-caption, 0.6 opacity)",
+      "active": "primary @ 40% bg tint",
+      "dividers": "1.5px base-300 between groups"
+    },
+    "Alert": {
+      "base": ".alert",
+      "padding": 16,
+      "iconToTextGap": 12,
+      "variants": {
+        "default": "base-200 / base-content",
+        "alert-info": "info / white",
+        "alert-success": "success / white",
+        "alert-warning": "warning / white",
+        "alert-error": "error / white"
+      },
+      "rule": "always include an icon matching the variant; never color-only state"
+    },
+    "Toast": {
+      "base": ".toast",
+      "wraps": "one or more .alert",
+      "stackGap": 12,
+      "defaultPosition": "bottom-right",
+      "positions": [
+        "toast-top",
+        "toast-bottom",
+        "toast-start",
+        "toast-center",
+        "toast-end"
+      ]
+    },
+    "Table": {
+      "base": ".table",
+      "header": "Instrument Sans Medium 14px @ 0.8 opacity",
+      "body": "text-body",
+      "cellPadding": "16px horizontal / 12px vertical",
+      "border": "1.5px base-300 on table and below header",
+      "variants": [
+        "table-zebra",
+        "table-pin-rows",
+        "table-xs/sm/md/lg"
+      ]
+    },
+    "Checkbox": {
+      "base": ".checkbox",
+      "size": "20x20",
+      "states": [
+        "default",
+        "checked (primary fill + check)",
+        "indeterminate",
+        "disabled"
+      ],
+      "label": "8px gap, Body style"
+    },
+    "Radio": {
+      "base": ".radio",
+      "size": "20x20",
+      "checkedDot": "10px primary",
+      "grouping": "shared name attr",
+      "optionGap": 12
+    },
+    "Toggle": {
+      "base": ".toggle",
+      "size": "40x24 pill, 16px knob",
+      "off": "base-200 + base-300 border",
+      "on": "primary fill",
+      "label": "12px gap, Body style"
+    },
+    "Range": {
+      "base": ".range",
+      "track": "4px (base-300 unfilled, primary filled)",
+      "thumb": "16px primary",
+      "defaultWidth": 320,
+      "value": "Caption above thumb @ 0.8 opacity"
+    },
+    "ChatBubble": {
+      "base": ".chat",
+      "variant": "header-and-footer only (no avatar / chat-image)",
+      "slots": {
+        "chat-header": "sender + timestamp, text-caption",
+        "chat-bubble": "message, square corners, 16/12 padding, base-200",
+        "chat-footer": "status, text-caption @ 0.8"
+      },
+      "direction": {
+        "chat-start": "left (received)",
+        "chat-end": "right (own)"
+      },
+      "colors": [
+        "default base-200",
+        "chat-bubble-primary (primary @ 12%)"
+      ],
+      "banned": [
+        "chat-image avatars",
+        "chat-bubble-secondary/accent/info/success/warning/error",
+        "rounded corners"
+      ],
+      "chat-bubble-primary": "primary @ 40% + base-content text (AI/agent)"
+    },
+    "Card": {
+      "base": ".card",
+      "fill": "base-200",
+      "border": "1.5px base-300",
+      "corners": "square",
+      "padding": "24px (p-6); 16px dense",
+      "title": "text-h2",
+      "body": "text-body",
+      "banned": [
+        "rounded-*",
+        "shadow-*",
+        "nesting >1 level"
+      ]
+    },
+    "Input": {
+      "base": ".input",
+      "height": 40,
+      "fill": "base-200",
+      "border": "1.5px base-300",
+      "text": "text-body",
+      "label": "text-label above, 8px gap",
+      "leadingIcon": "20px base-content",
+      "error": "1.5px error border + text-caption msg + ph-warning-circle",
+      "disabled": "50% opacity",
+      "typography": {
+        "label": "text-button (Instrument Sans Medium 14/1.2, full base-content)",
+        "text/placeholder": "text-body (Instrument Sans Regular 14/1.5)",
+        "helper/validation": "text-caption (IBM Plex Mono Regular 12/1.5); hint base-content@0.8, error=error, success=success"
+      }
+    },
+    "Select": {
+      "base": ".select",
+      "height": 40,
+      "fill": "base-200",
+      "border": "1.5px base-300",
+      "text": "text-body",
+      "label": "text-label above",
+      "note": "fixed option set; use Dropdown+Menu when items need icons/badges/actions",
+      "labelStyle": "text-button (not text-label)"
+    },
+    "Textarea": {
+      "base": ".textarea",
+      "startHeight": 40,
+      "fill": "base-200",
+      "border": "1.5px base-300",
+      "text": "text-body",
+      "label": "text-label above",
+      "note": "set default height via rows, not off-scale fixed height",
+      "labelStyle": "text-button (not text-label)"
+    },
+    "Badge": {
+      "base": ".badge",
+      "height": "~24 (xs)",
+      "text": "text-label (sentence-case)",
+      "fill": "base-200 / tinted with base-content text",
+      "rule": "status pairs color with the word (+icon if needed), never color alone; not a button"
+    },
+    "Avatar": {
+      "base": ".avatar",
+      "defaultSize": 40,
+      "sizes": [
+        24,
+        32,
+        40,
+        64
+      ],
+      "corners": "square (no rounded-full)",
+      "fill": "base-200",
+      "fallback": "initials (text-label) or ph-user, base-content",
+      "note": "navbar avatar placeholder; never inside chat bubbles"
+    },
+    "Tooltip": {
+      "base": ".tooltip",
+      "fill": "neutral",
+      "text": "neutral-content, text-caption",
+      "corners": "square",
+      "rule": "hint only — not a substitute for a visible label; still set aria-label on icon-only controls"
+    },
+    "Scrollbar": {
+      "source": "theme (global, no class needed)",
+      "width": 12,
+      "track": "transparent",
+      "thumb": "base-300 square",
+      "thumbHover": "base-content @35%",
+      "firefox": "scrollbar-width:thin; scrollbar-color:base-300 transparent",
+      "note": "daisyUI has no scrollbar component; do not restyle per component"
+    },
+    "Footer": {
+      "type": "custom Lahzo component (not standard daisyUI), like Navbar",
+      "container": "border-t-[1.5px] border-base-300 bg-base-100, square corners, flat",
+      "logo": "Lahzo mark (lahzo-mark-navy.svg, 20x28) — mark belongs in footers, wordmark in header",
+      "typography": {
+        "copyright/address": "text-caption (IBM Plex Mono 12)",
+        "linkColumnTitle": "text-h3 (Instrument Sans Medium 16)",
+        "links": "btn-link (Instrument Sans Medium 14, underlined, base-content)"
+      },
+      "variants": {
+        "simple": "~64px row: mark left, flex spacer, copyright right (text-caption)",
+        "withLinks": "items-start justify-between: left mark + address (text-caption); right link columns (gap-12), each text-h3 title over gap-3 btn-link stack",
+        "withLinksAndSearch": "variant 2 + a magnifier search Input (~280px, text-body) as the last right-cluster item"
+      },
+      "notes": "footer links use btn-link standalone (compact underlined text links); footer is optional and best on scrollable/page screens, not full-height app shells",
+      "whenToInclude": "OPT-IN (opposite of navbar): only when the user explicitly asks, a footer is in the wireframe/reference, or one already exists in the project. Never add by default."
+    }
+  },
+  "textUtilities": {
+    "text-display-lg": "Beirut Display 48 / 110% / -4% — hero",
+    "text-display": "Beirut Display 36 / 120% / -2% — section display",
+    "text-h1": "Instrument Sans Medium 24 / 120% — section title",
+    "text-h2": "Instrument Sans SemiBold 18 / 120% — card/modal title",
+    "text-h3": "Instrument Sans Medium 16 / 130% — content title",
+    "text-body-lg": "Instrument Sans Regular 16 / 150% — lead paragraph",
+    "text-body": "Instrument Sans Regular 14 / 150% — default body",
+    "text-button": "Instrument Sans Medium 14 / 120% — button labels, nav tabs",
+    "text-caption": "IBM Plex Mono Regular 12 / 150% — metadata",
+    "text-label": "IBM Plex Mono Medium 12 / 150% — UI labels (sentence-case)",
+    "btn-link": "Instrument Sans Medium 14 / 120% / UNDERLINE / base-content — links only"
+  },
+  "themeTokens": {
+    "base-100": "#F8F8F6",
+    "base-200": "#EBEBE5",
+    "base-300": "#DCDCD3",
+    "base-content": "#242736",
+    "primary": "#63A8CC",
+    "primary-content": "#242736",
+    "secondary": "#EBEBE5",
+    "secondary-content": "#242736",
+    "accent": "#FFD294",
+    "accent-content": "#242736",
+    "neutral": "#242736",
+    "neutral-content": "#FFFFFF",
+    "info": "#3E7FA3",
+    "success": "#3F6F55",
+    "warning": "#CE8D3B",
+    "error": "#B0402A",
+    "radius-field": "0",
+    "radius-box": "0",
+    "border": "1.5px",
+    "depth": 0,
+    "noise": 0
+  },
+  "scales": {
+    "spacing": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      64,
+      80,
+      96
+    ],
+    "controlHeights": {
+      "xs": 24,
+      "sm": 32,
+      "md": 40,
+      "lg": 48
+    },
+    "iconSizes": [
+      16,
+      20,
+      24,
+      32
+    ],
+    "iconDefault": 20
+  },
+  "accessibility": {
+    "normalText": "4.5:1 min",
+    "largeText": "3:1 min (18px+, or 14px+ bold)",
+    "uiGraphics": "3:1 min",
+    "tintedSurfaceText": "use base-content (never same-family tinted text on a tinted bg)",
+    "mutedOpacity": "0.8 only",
+    "stateIndicators": "never color-alone — pair with icon + text"
+  },
+  "selectionTint": "primary #63A8CC @ 40% (color-mix oklab) + base-content text — selected rows, menu-active, agent chat bubble",
+  "version": "1.1"
+}

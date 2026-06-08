@@ -1,0 +1,13 @@
+Copyright (c) Lahzo. All rights reserved.
+
+This repository contains the Lahzo Internal Design System, including the Lahzo
+name, logos, brand fonts (Beirut Display) and visual language. It is intended
+for internal use within the organization.
+
+Internal teams may use these assets to build Lahzo internal tools. Redistribution
+of the brand assets (logos, Beirut Display font, theme) outside the organization
+is not permitted without written permission.
+
+Third-party assets retain their own licenses:
+  - Instrument Sans, IBM Plex Mono — SIL Open Font License 1.1 (loaded from Google Fonts)
+  - Phosphor Icons — MIT License (https://github.com/phosphor-icons/homepage)
