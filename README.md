@@ -45,7 +45,7 @@ The stylesheet is **scoped to the markup it is built against** — Tailwind only
 can see. So you don't copy `docs/styles.css` into another project; instead, point the build at
 your own HTML and recompile (see below). In your tool:
 
-1. Set the theme on the root element: `<html data-theme="Lahzo — Light Theme">`.
+1. Set the theme on the root element: `<html data-theme="Lahzo — Light Theme">` (default) — or `data-theme="Lahzo — Dark Theme"` for dark.
 2. Link the compiled stylesheet and keep `fonts/` beside it.
 3. Build every element from a daisyUI component + the Lahzo theme classes + a `text-*` utility.
    Never hand-roll a control with raw `<div>`s and custom CSS.
@@ -67,7 +67,7 @@ safelist element at the top of `docs/index.html`) or the build won't emit them.
 
 ## The non-negotiables (full detail in `GUIDELINES.md`)
 
-- **Lahzo Light only** — no dark mode. Theme tokens only, never raw hex.
+- **Two themes** — Lahzo Light (default) + Lahzo Dark, switched via `data-theme`. Theme tokens only, never raw hex (so the same markup works in both).
 - **Square corners, 1.5px borders**, muted earthy palette.
 - **Eleven type styles**, sentence-case everywhere, underline reserved for links.
 - **Spacing scale:** 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 / 80 / 96.

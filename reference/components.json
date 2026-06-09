@@ -2,8 +2,8 @@
   "designSystem": {
     "name": "Lahzo Internal Design System",
     "stack": "Tailwind CSS v4 + daisyUI v5",
-    "theme": "Lahzo — Light Theme (set via data-theme on <html>)",
-    "note": "Code-only reference. Desktop internal tools. Every UI element uses a daisyUI component configured with the Lahzo theme classes, a defined text-* utility, and the spacing/sizing/icon scales. Three tiers: canonical components + specified essentials (Card/Input/Select/Textarea/Badge/Avatar/Tooltip) use the specs here; anything else uses base daisyUI + the Lahzo theme, no bespoke CSS. Dark mode is out of scope. Full prose specs live in rules/design-system-rules.md; build recipes in reference/playbooks.md."
+    "theme": "Two themes — 'Lahzo — Light Theme' (default) and 'Lahzo — Dark Theme'; set via data-theme on <html>. Same structure (square corners, 1.5px borders, depth 0), only color tokens differ.",
+    "note": "Code-only reference. Desktop internal tools. Every UI element uses a daisyUI component configured with the Lahzo theme classes, a defined text-* utility, and the spacing/sizing/icon scales. Three tiers: canonical components + specified essentials (Card/Input/Select/Textarea/Badge/Avatar/Tooltip) use the specs here; anything else uses base daisyUI + the Lahzo theme, no bespoke CSS. Two themes ship — Lahzo Light (default) and Lahzo Dark; build with theme tokens (never raw hex) so the same markup works in both (token values in themeTokens / darkThemeTokens). Full prose specs live in rules/design-system-rules.md; build recipes in reference/playbooks.md."
   },
   "components": {
     "Button": {
@@ -147,9 +147,9 @@
         "tabs-border": "alternative — active tab base-content underline"
       },
       "logo": {
-        "header": "assets/lahzo-wordmark-navy.svg via <img width=78 height=16> — ALWAYS 78x16, never scaled",
-        "footer": "assets/lahzo-mark-navy.svg — footers only",
-        "currentColor": "assets/lahzo-wordmark.svg / lahzo-mark.svg — inline to inherit text color (e.g. white on a dark footer)"
+        "header": "Inline assets/lahzo-wordmark.svg (currentColor) with class=text-base-content — ALWAYS 78x16, never scaled; follows theme (navy in light, white in dark)",
+        "footer": "Inline assets/lahzo-mark.svg (currentColor) with class=text-base-content — footers only; follows theme (navy in light, white in dark)",
+        "currentColor": "The -navy variants (lahzo-wordmark-navy.svg / lahzo-mark-navy.svg) are fixed-color fallbacks for static single-theme <img> contexts only (e.g. favicon)"
       },
       "allowedElements": [
         "brand (logo + tool name)",
@@ -163,7 +163,7 @@
       "defaultOnEveryScreen": true,
       "canonicalRecipe": {
         "nav": "navbar bg-base-100 h-16 px-6 gap-6 shrink-0 py-0 (default items-center)",
-        "brand": "flex items-center gap-4 shrink-0 — wordmark img 78x16, 1.5px divider, font-display text-2xl tool name",
+        "brand": "flex items-center gap-4 shrink-0 — inline currentColor wordmark 78x16 (class=text-base-content), 1.5px divider, font-display text-2xl tool name",
         "tablist": "tabs tabs-border self-stretch — fills navbar height",
         "tabAnchor": "tab text-button h-full + data-screen=… ; active gets tab-active",
         "separator": "<div class='h-[1.5px] bg-base-300 shrink-0'> right under the navbar continues the line"
@@ -397,7 +397,7 @@
     "Footer": {
       "type": "custom Lahzo component (not standard daisyUI), like Navbar",
       "container": "border-t-[1.5px] border-base-300 bg-base-100, square corners, flat",
-      "logo": "Lahzo mark (lahzo-mark-navy.svg, 20x28) — mark belongs in footers, wordmark in header",
+      "logo": "Lahzo mark — inline lahzo-mark.svg (currentColor) with class=text-base-content, 20x28 — follows theme (navy in light, white in dark); mark belongs in footers, wordmark in header",
       "typography": {
         "copyright/address": "text-caption (IBM Plex Mono 12)",
         "linkColumnTitle": "text-h3 (Instrument Sans Medium 16)",
@@ -442,6 +442,30 @@
     "success": "#3F6F55",
     "warning": "#CE8D3B",
     "error": "#B0402A",
+    "radius-field": "0",
+    "radius-box": "0",
+    "border": "1.5px",
+    "depth": 0,
+    "noise": 0
+  },
+  "darkThemeTokens": {
+    "_note": "Lahzo — Dark Theme. Same structure as light; only colors differ. In dark, base-200 (#12131A) is DARKER than base-100 (#1B1D27) so elevated surfaces recede — keep using base-100/200/300 semantically.",
+    "base-100": "#1B1D27",
+    "base-200": "#12131A",
+    "base-300": "#262A38",
+    "base-content": "#FFFFFF",
+    "primary": "#5CADD6",
+    "primary-content": "#242736",
+    "secondary": "#12131A",
+    "secondary-content": "#FFFFFF",
+    "accent": "#FFD294",
+    "accent-content": "#242736",
+    "neutral": "#242736",
+    "neutral-content": "#FFFFFF",
+    "info": "#5AA6CC",
+    "success": "#5E9B7A",
+    "warning": "#E2A24A",
+    "error": "#D85A3F",
     "radius-field": "0",
     "radius-box": "0",
     "border": "1.5px",

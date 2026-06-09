@@ -320,7 +320,8 @@ No `12px` or `14px` icons — bump up to 16.
 <nav class="navbar bg-base-100 h-16 px-6 gap-6">
   <!-- Brand -->
   <div class="flex items-center gap-4">
-    <img src="assets/lahzo-wordmark-navy.svg" alt="Lahzo" width="78" height="16" />
+    <!-- Inline the currentColor wordmark so it follows the theme (navy in light, white in dark) -->
+    <svg class="text-base-content" width="78" height="16" viewBox="0 0 78 16" role="img" aria-label="Lahzo"><!-- lahzo-wordmark.svg paths --></svg>
     <div class="w-[1.5px] h-4 bg-base-300"></div>
     <span class="font-display text-2xl leading-[120%]">Tool Name</span>
   </div>
@@ -352,7 +353,7 @@ No `12px` or `14px` icons — bump up to 16.
 
 | Element | Required | Spec |
 |---|---|---|
-| **Lahzo SVG logo** | ✅ Always | The wordmark, always on the far left, at a **fixed 78×16** (never scaled). Use the bundled asset (see Logo assets below) — never replace it with text. |
+| **Lahzo SVG logo** | ✅ Always | The wordmark, always on the far left, at a **fixed 78×16** (never scaled). **Inline the `currentColor` variant** (`class="text-base-content"`) so it follows the theme — navy in light, white in dark. Never replace it with text. |
 | **Divider** | ✅ Always | `1.5px × 16px` vertical line in `base-300`, separates logo from tool name |
 | **Tool name** | ✅ Always | Beirut Display Book, `24px`, `120%` line-height. The product/tool name (e.g. "Loupe", "Dashboard") |
 | **Nav tabs** | Optional | Primary navigation. See Tab States below |
@@ -436,7 +437,7 @@ Canonical recipe — use this every time you put tabs in the header:
 <nav class="navbar bg-base-100 h-16 px-6 gap-6 shrink-0 py-0">
   <!-- Brand (vertically centered by default items-center) -->
   <div class="flex items-center gap-4 shrink-0">
-    <img src="…/lahzo-wordmark-navy.svg" width="78" height="16" alt="Lahzo" />
+    <svg class="text-base-content" width="78" height="16" viewBox="0 0 78 16" role="img" aria-label="Lahzo"><!-- lahzo-wordmark.svg paths (currentColor) --></svg>
     <div class="w-[1.5px] h-4 bg-base-300"></div>
     <span class="font-display text-2xl leading-none">Product name</span>
   </div>
@@ -465,11 +466,11 @@ Bundled in `assets/`. The brand color is the navy `base-content` (`#242736`).
 
 | File | What | Use |
 |---|---|---|
-| `lahzo-wordmark-navy.svg` | Horizontal "Lahzo" logotype (78×16) | **Header / navbar only.** Drop in via `<img width="78" height="16">` — **always exactly 78×16, never scaled.** |
-| `lahzo-mark-navy.svg` | Compact symbol/mark (20×28) | **Footers only.** Don't use it in the header or as a general decorative element. |
-| `lahzo-wordmark.svg` / `lahzo-mark.svg` | Same shapes, `fill="currentColor"` | **Inline** these (not `<img>`) when the logo must take the surrounding text color — e.g. white on a dark `neutral` footer. `currentColor` only works when the SVG is inlined in the DOM. |
+| `lahzo-wordmark.svg` | Horizontal "Lahzo" logotype (78×16), `fill="currentColor"` | **Header / navbar.** **Inline** it (not `<img>`) with `class="text-base-content"` so it follows the theme — **navy in light, white in dark.** Always exactly 78×16, never scaled. |
+| `lahzo-mark.svg` | Compact symbol/mark (20×28), `fill="currentColor"` | **Footers.** **Inline** it with `class="text-base-content"` so it follows the theme (navy in light, white in dark). The mark belongs in footers, not the header. |
+| `lahzo-wordmark-navy.svg` / `lahzo-mark-navy.svg` | Fixed-navy variants of the above | Only for static, single-theme `<img>` contexts (e.g. favicon) where inlining isn't possible. Prefer the `currentColor` variants so the logo adapts to light/dark. |
 
-- The header wordmark is **always 78×16** — don't stretch, shrink, recolor (except via the currentColor variant), rotate, or add effects.
+- The header wordmark is **always 78×16** — don't stretch, shrink, rotate, or add effects. The only recolor is the **theme**: the inlined `currentColor` variant follows `base-content` (navy in light, white in dark).
 - The mark belongs in **footers**; the wordmark belongs in the **header**. Don't swap them.
 - The logo is the only place the brand mark appears — it is not a decorative element to sprinkle around screens.
 - **One selected tab at a time** — the selected tab indicates the current route
@@ -494,7 +495,7 @@ Typography: copyright / address → **`text-caption`** (IBM Plex Mono 12); link-
 
 ```html
 <footer class="border-t-[1.5px] border-base-300 bg-base-100 px-6 h-16 flex items-center gap-6 shrink-0">
-  <img src="assets/lahzo-mark-navy.svg" width="20" height="28" alt="Lahzo" class="shrink-0" />
+  <svg class="text-base-content shrink-0" width="20" height="28" viewBox="0 0 20 28" role="img" aria-label="Lahzo"><!-- lahzo-mark.svg paths (currentColor) --></svg>
   <div class="flex-1"></div>
   <p class="text-caption opacity-80">© 2026 Lahzo. All rights reserved.</p>
 </footer>
@@ -507,7 +508,7 @@ title over a `gap-3` stack of `btn-link`s.
 ```html
 <footer class="border-t-[1.5px] border-base-300 bg-base-100 px-6 pt-6 pb-6 flex items-start justify-between gap-12 shrink-0">
   <div class="flex flex-col gap-3">
-    <img src="assets/lahzo-mark-navy.svg" width="20" height="28" alt="Lahzo" />
+    <svg class="text-base-content" width="20" height="28" viewBox="0 0 20 28" role="img" aria-label="Lahzo"><!-- lahzo-mark.svg paths (currentColor) --></svg>
     <p class="text-caption opacity-80 leading-relaxed">
       Lahzo, Inc.<br />501 Union Street, Suite 545 PMB 40191<br />Nashville, TN 37219<br />© 2026 Lahzo. All rights reserved.
     </p>
@@ -1028,11 +1029,11 @@ them inherit. Default render size is 20×20px (`text-xl`).
 | CheckCircle | `ph-check-circle` | Success state |
 | XCircle | `ph-x-circle` | Error state |
 
-## Default daisyUI Theme
+## Themes
 
-Always use the **Lahzo — Light Theme** custom theme when generating any daisyUI output. Set it via `data-theme="Lahzo — Light Theme"` on the `<html>` element.
+The system ships **two themes — Lahzo — Light Theme (the default) and Lahzo — Dark Theme.** Set one on the `<html>` element: `data-theme="Lahzo — Light Theme"` (default) or `data-theme="Lahzo — Dark Theme"`. **Light is the preferred default** — reach for dark only when a screen is explicitly meant to be dark.
 
-**Dark mode is out of scope.** There is no Lahzo dark theme in this system. If a request asks for dark mode, say it isn't part of the design system yet rather than improvising one — an improvised dark theme would break the square-corner / 1.5px-border / contrast rules the system depends on.
+**Both themes share the same structure** — identical square corners (`--radius-field: 0`, `--radius-box: 0`), 1.5px borders, depth 0, and the same component specs. Only the color tokens differ. Because every component is built from **theme tokens** (`base-100`, `base-content`, `primary`, …) and never raw hex, the same markup renders correctly in both themes automatically — never hardcode a color to "support" a theme.
 
 **Sharp-edged design system:** This theme uses **flat, square edges** (`--radius-field: 0`, `--radius-box: 0`) with slightly thicker **1.5px borders**. Do not apply custom rounded corners to components — let the theme tokens drive the visual language.
 
@@ -1068,13 +1069,47 @@ Always use the **Lahzo — Light Theme** custom theme when generating any daisyU
 | depth | 0 | Flat — no shadows from depth token |
 | noise | 0 | Clean — no noise overlay |
 
+### Theme Quick Reference — Lahzo — Dark Theme
+| Token | Value | Usage |
+|---|---|---|
+| primary | `#5CADD6` (sky blue) | Main brand color, buttons, links, focus rings |
+| primary-content | `#242736` | Text on primary surfaces |
+| secondary | `#12131A` (near-black) | Quiet secondary actions (same value as base-200 — visually blends with elevated surfaces) |
+| secondary-content | `#FFFFFF` | Text on secondary surfaces |
+| accent | `#FFD294` (light gold) | Highlights, decorative accents |
+| accent-content | `#242736` | Text on accent surfaces |
+| neutral | `#242736` (dark navy) | Dark UI elements, footer, tooltips |
+| neutral-content | `#FFFFFF` | Text on neutral surfaces |
+| base-100 | `#1B1D27` (dark navy) | Page background |
+| base-200 | `#12131A` (near-black) | Cards, inputs, elevated surfaces — **darker than base-100**, so surfaces recede |
+| base-300 | `#262A38` (slate) | Borders, dividers, deeper surfaces |
+| base-content | `#FFFFFF` | Default text color |
+| info | `#5AA6CC` (muted blue) | Informational messages |
+| info-content | `#242736` | Text on info surfaces |
+| success | `#5E9B7A` (muted green) | Success states |
+| success-content | `#242736` | Text on success surfaces |
+| warning | `#E2A24A` (warm gold) | Warning states |
+| warning-content | `#242736` | Text on warning surfaces |
+| error | `#D85A3F` (terracotta) | Error/danger states |
+| error-content | `#242736` | Text on error surfaces |
+| **radius-selector** | `0.25rem` (4px) | Selectors/toggles — tiny corner softening |
+| **radius-field** | `0rem` | **Fields, inputs, buttons — square** |
+| **radius-box** | `0rem` | **Cards, modals, alerts — square** |
+| size-selector | `0.25rem` | Selector base unit |
+| size-field | `0.25rem` | Field base unit |
+| **border** | `1.5px` | All component borders |
+| depth | 0 | Flat — no shadows from depth token |
+| noise | 0 | Clean — no noise overlay |
+
+> **Base ordering in dark.** Unlike light (base-200 is darker than base-100 to lift surfaces), in dark `base-200` (`#12131A`) is **darker than** `base-100` (`#1B1D27`), so elevated surfaces recede and the page sits one step up — daisyUI's dark convention. Keep using `base-100/200/300` semantically and it works in both themes. In dark, the `*-content` tokens are dark navy (`#242736`) because the accent/status colors are light.
+
 ### ⚠️ Visual character changes
 - **Square corners everywhere** — buttons, inputs, modals, cards, alerts. No more `rounded-full` buttons or `rounded-2xl` cards.
 - **1.5px borders** instead of 1px — slightly more pronounced edges.
 - **Muted, earthy palette** — primary is desaturated sky blue, info is muted slate-blue, success is forest green, warning is warm gold, error is terracotta.
 - **Quiet secondary** — `secondary` is the same value as `base-200` (`#EBEBE5`). Secondary buttons read as soft, low-emphasis affordances; warm gold lives exclusively in `warning`.
 
-> **Dark mode:** intentionally not part of this system. Don't emit a `Lahzo_dark` theme or any dark variant.
+> **Dark mode:** supported via the **Lahzo — Dark Theme** above. Light is the default; switch with `data-theme="Lahzo — Dark Theme"`. Build with theme tokens (never raw hex) so components work in both themes with no per-theme overrides.
 
 ## Scope, component tiers, and behavior
 

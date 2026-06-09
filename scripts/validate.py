@@ -66,10 +66,12 @@ def check_html(text):
 
     lines = scan.splitlines()
 
-    # whole-doc check: theme attribute
-    if "<html" in text and 'data-theme="Lahzo — Light Theme"' not in text:
+    # whole-doc check: theme attribute (Light is the default; Dark is also valid)
+    if "<html" in text and not (
+        'data-theme="Lahzo — Light Theme"' in text
+        or 'data-theme="Lahzo — Dark Theme"' in text):
         findings.append(Finding("ERROR", 1,
-            'Missing data-theme="Lahzo — Light Theme" on <html>.'))
+            'Missing data-theme on <html> — set "Lahzo — Light Theme" (default) or "Lahzo — Dark Theme".'))
 
     for n, line in enumerate(lines, 1):
         # ---- class attributes ----

@@ -9,12 +9,12 @@ settings screens, review tools, data tables, forms). It is maintained by a **UX/
 designer** — so prefer plain-language explanations, do the technical steps yourself,
 and never assume terminal fluency.
 
-**Stack:** HTML + Tailwind CSS v4 + daisyUI v5, styled with the **Lahzo Light** theme.
-Desktop-first, **light theme only (no dark mode)**.
+**Stack:** HTML + Tailwind CSS v4 + daisyUI v5, styled with the **Lahzo** theme.
+Desktop-first. **Two themes — Lahzo Light (the default) and Lahzo Dark**, switched via `data-theme`.
 
 ## Non-negotiables (full detail in `GUIDELINES.md`)
 
-- Lahzo Light theme only. **Theme tokens only, never raw hex.** Square corners, 1.5px borders, muted earthy palette.
+- Lahzo Light (default) + Lahzo Dark themes, switched via `data-theme`. **Theme tokens only, never raw hex** — so the same markup renders in both themes. Square corners, 1.5px borders, muted earthy palette.
 - Every element = **a daisyUI component + Lahzo theme classes + a defined `text-*` utility**. No hand-rolled controls, no bespoke CSS unless the system genuinely lacks the pattern.
 - **11 type styles** (`text-display-lg/display/h1/h2/h3/body-lg/body/button/caption/label` + `btn-link`). No custom sizes/weights.
 - **Sentence-case everywhere.** Underline reserved for `btn-link` only.

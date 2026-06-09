@@ -279,7 +279,7 @@ a .ph {
 /* ── Lahzo — Light Theme ── */
 @plugin "daisyui/theme" {
   name: "Lahzo — Light Theme";
-  default: false;
+  default: true;
   prefersdark: false;
   color-scheme: "light";
   --color-base-100: #F8F8F6;
@@ -302,6 +302,42 @@ a .ph {
   --color-warning-content: #ffffff;
   --color-error: #B0402A;
   --color-error-content: #ffffff;
+  --radius-selector: 0.25rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* ── Lahzo — Dark Theme ── */
+@plugin "daisyui/theme" {
+  name: "Lahzo — Dark Theme";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: #1B1D27;
+  --color-base-200: #12131A;
+  --color-base-300: #262A38;
+  --color-base-content: #FFFFFF;
+  --color-primary: #5CADD6;
+  --color-primary-content: #242736;
+  --color-secondary: #12131A;
+  --color-secondary-content: #FFFFFF;
+  --color-accent: #FFD294;
+  --color-accent-content: #242736;
+  --color-neutral: #242736;
+  --color-neutral-content: #ffffff;
+  --color-info: #5AA6CC;
+  --color-info-content: #242736;
+  --color-success: #5E9B7A;
+  --color-success-content: #242736;
+  --color-warning: #E2A24A;
+  --color-warning-content: #242736;
+  --color-error: #D85A3F;
+  --color-error-content: #242736;
   --radius-selector: 0.25rem;
   --radius-field: 0rem;
   --radius-box: 0rem;
