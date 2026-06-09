@@ -48,4 +48,4 @@ When a token changes here, update the matching Figma variable in the same change
 - [ ] New or changed specs reflected in `reference/components.json` and `GUIDELINES.md`.
 - [ ] Showcase updated in `docs/index.html` if a component changed.
 - [ ] Eyeballed in the browser — layout, hierarchy, and spacing rhythm look right.
-- [ ] No dark-mode assumptions, no raw hex, sentence-case copy, Phosphor icons only.
+- [ ] Works in both themes (Light + Dark) via tokens — no raw hex, sentence-case copy, Phosphor icons only.
