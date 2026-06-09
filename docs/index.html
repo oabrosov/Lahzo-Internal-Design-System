@@ -15,7 +15,17 @@
   <!-- ── Navbar (canonical) ─────────────────────────────────────────────── -->
   <nav class="navbar bg-base-100 h-16 px-6 gap-6 shrink-0 py-0">
     <div class="flex items-center gap-4 shrink-0">
-      <img src="assets/lahzo-wordmark-navy.svg" width="78" height="16" alt="Lahzo" />
+      <svg class="text-base-content shrink-0" width="78" height="16" viewBox="0 0 78 16" fill="none" role="img" aria-label="Lahzo" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60.3691 5.55305H54.3107L46.3483 11.8403V15.6641H60.4395V11.6238H52.8557L60.3691 5.55305Z" fill="currentColor"/>
+        <path d="M69.8015 0C64.223 0 61.6029 3.5819 61.6029 8C61.6029 12.4181 64.223 16 69.8015 16C75.38 16 78 12.4181 78 8C78 3.5819 75.38 0 69.8015 0ZM69.814 12.079C67.0457 12.079 66.2651 10.2636 66.2651 8.02371C66.2651 5.78384 67.0457 3.96839 69.814 3.96839C72.5823 3.96839 73.363 5.78384 73.363 8.02371C73.363 10.2636 72.5823 12.079 69.814 12.079Z" fill="currentColor"/>
+        <path d="M19.1076 9.01166L20.5709 4.52954L21.6389 7.83403H26.2675L23.4992 0.335902H17.7565L12.0708 15.6641H16.9348L17.976 12.4766H23.1382L24.1685 15.6641H29.1581L26.7022 9.01166H19.1076Z" fill="currentColor"/>
+        <path d="M4.66298 0.335902H0V10.4469H4.66298V0.335902Z" fill="currentColor"/>
+        <path d="M34.9661 11.25H30.3031V15.6641H34.9661V11.25Z" fill="currentColor"/>
+        <path d="M44.9479 0.335902H40.2849V4.85438H44.9479V0.335902Z" fill="currentColor"/>
+        <path d="M0 11.6238V15.6641H11.1905V11.6238H0Z" fill="currentColor"/>
+        <path d="M34.9653 6.03201V0.335902H30.3031V10.0723H40.2849V15.6641H44.9479V6.03201H34.9653Z" fill="currentColor"/>
+        <path d="M60.8767 0.335902H46.3483V4.37621H60.8767V0.335902Z" fill="currentColor"/>
+      </svg>
       <div class="w-[1.5px] h-4 bg-base-300"></div>
       <span class="font-display text-2xl leading-none">Design system</span>
     </div>
@@ -24,10 +34,9 @@
       <a role="tab" class="tab text-button h-full" data-screen="components">Components</a>
     </div>
     <div class="flex-1"></div>
-    <label class="input input-sm w-64 flex items-center gap-2">
-      <i class="ph ph-magnifying-glass text-base-content/80"></i>
-      <input type="text" class="grow text-body" placeholder="Search the system…" />
-    </label>
+    <button id="theme-toggle" type="button" class="btn btn-ghost btn-sm" aria-label="Switch to dark theme">
+      <i class="ph ph-moon text-xl"></i>
+    </button>
     <div class="avatar avatar-placeholder">
       <div class="bg-base-200 text-base-content w-8"><span class="text-label">Ux</span></div>
     </div>
@@ -41,8 +50,8 @@
 
       <header class="space-y-3">
         <p class="text-display">Lahzo design system</p>
-        <p class="text-body-lg max-w-2xl">The shared visual language for Lahzo internal tools — built on Tailwind CSS v4 and daisyUI v5, styled with the Lahzo Light theme. Square corners, 1.5px borders, a muted earthy palette.</p>
-        <p class="text-caption">Version 1.1 · desktop internal tools · light theme only</p>
+        <p class="text-body-lg max-w-2xl">The shared visual language for Lahzo internal tools — built on Tailwind CSS v4 and daisyUI v5, styled with the Lahzo theme. Square corners, 1.5px borders, a muted earthy palette.</p>
+        <p class="text-caption">Version 1.1 · desktop internal tools · two themes (light default, dark)</p>
       </header>
 
       <!-- Colors -->
@@ -53,30 +62,30 @@
         <div>
           <h3 class="text-h3 mb-4">Base</h3>
           <div class="grid grid-cols-4 gap-4">
-            <div><div class="h-16 bg-base-100 border-[1.5px] border-base-300"></div><p class="text-label mt-2">Base 100</p><p class="text-caption">#F8F8F6 · surface</p></div>
-            <div><div class="h-16 bg-base-200 border-[1.5px] border-base-300"></div><p class="text-label mt-2">Base 200</p><p class="text-caption">#EBEBE5 · panels</p></div>
-            <div><div class="h-16 bg-base-300"></div><p class="text-label mt-2">Base 300</p><p class="text-caption">#DCDCD3 · borders</p></div>
-            <div><div class="h-16 bg-base-content"></div><p class="text-label mt-2">Base content</p><p class="text-caption">#242736 · text</p></div>
+            <div><div class="h-16 bg-base-100 border-[1.5px] border-base-300"></div><p class="text-label mt-2">Base 100</p><p class="text-caption"><span data-hex="base-100">#F8F8F6</span> · surface</p></div>
+            <div><div class="h-16 bg-base-200 border-[1.5px] border-base-300"></div><p class="text-label mt-2">Base 200</p><p class="text-caption"><span data-hex="base-200">#EBEBE5</span> · panels</p></div>
+            <div><div class="h-16 bg-base-300"></div><p class="text-label mt-2">Base 300</p><p class="text-caption"><span data-hex="base-300">#DCDCD3</span> · borders</p></div>
+            <div><div class="h-16 bg-base-content"></div><p class="text-label mt-2">Base content</p><p class="text-caption"><span data-hex="base-content">#242736</span> · text</p></div>
           </div>
         </div>
 
         <div>
           <h3 class="text-h3 mb-4">Brand</h3>
           <div class="grid grid-cols-4 gap-4">
-            <div><div class="h-16 bg-primary"></div><p class="text-label mt-2">Primary</p><p class="text-caption">#63A8CC</p></div>
-            <div><div class="h-16 bg-secondary border-[1.5px] border-base-300"></div><p class="text-label mt-2">Secondary</p><p class="text-caption">#EBEBE5</p></div>
-            <div><div class="h-16 bg-accent"></div><p class="text-label mt-2">Accent</p><p class="text-caption">#FFD294</p></div>
-            <div><div class="h-16 bg-neutral"></div><p class="text-label mt-2">Neutral</p><p class="text-caption">#242736</p></div>
+            <div><div class="h-16 bg-primary"></div><p class="text-label mt-2">Primary</p><p class="text-caption"><span data-hex="primary">#63A8CC</span></p></div>
+            <div><div class="h-16 bg-secondary border-[1.5px] border-base-300"></div><p class="text-label mt-2">Secondary</p><p class="text-caption"><span data-hex="secondary">#EBEBE5</span></p></div>
+            <div><div class="h-16 bg-accent"></div><p class="text-label mt-2">Accent</p><p class="text-caption"><span data-hex="accent">#FFD294</span></p></div>
+            <div><div class="h-16 bg-neutral"></div><p class="text-label mt-2">Neutral</p><p class="text-caption"><span data-hex="neutral">#242736</span></p></div>
           </div>
         </div>
 
         <div>
           <h3 class="text-h3 mb-4">Status</h3>
           <div class="grid grid-cols-4 gap-4">
-            <div><div class="h-16 bg-info"></div><p class="text-label mt-2">Info</p><p class="text-caption">#3E7FA3</p></div>
-            <div><div class="h-16 bg-success"></div><p class="text-label mt-2">Success</p><p class="text-caption">#3F6F55</p></div>
-            <div><div class="h-16 bg-warning"></div><p class="text-label mt-2">Warning</p><p class="text-caption">#CE8D3B</p></div>
-            <div><div class="h-16 bg-error"></div><p class="text-label mt-2">Error</p><p class="text-caption">#B0402A</p></div>
+            <div><div class="h-16 bg-info"></div><p class="text-label mt-2">Info</p><p class="text-caption"><span data-hex="info">#3E7FA3</span></p></div>
+            <div><div class="h-16 bg-success"></div><p class="text-label mt-2">Success</p><p class="text-caption"><span data-hex="success">#3F6F55</span></p></div>
+            <div><div class="h-16 bg-warning"></div><p class="text-label mt-2">Warning</p><p class="text-caption"><span data-hex="warning">#CE8D3B</span></p></div>
+            <div><div class="h-16 bg-error"></div><p class="text-label mt-2">Error</p><p class="text-caption"><span data-hex="error">#B0402A</span></p></div>
           </div>
         </div>
 
@@ -166,6 +175,13 @@
             <li><a href="#menus" class="text-body">Dropdown &amp; menu</a></li>
             <li><a href="#modal" class="text-body">Modal</a></li>
             <li><a href="#chat" class="text-body">Tooltip &amp; chat</a></li>
+            <li><a href="#stats" class="text-body">Stats</a></li>
+            <li><a href="#list" class="text-body">List</a></li>
+            <li><a href="#timeline" class="text-body">Timeline</a></li>
+            <li><a href="#loading" class="text-body">Loading &amp; skeleton</a></li>
+            <li><a href="#fileinput" class="text-body">File input</a></li>
+            <li><a href="#page-header" class="text-body">Page header</a></li>
+            <li><a href="#footer-demo" class="text-body">Footer</a></li>
           </ul>
         </aside>
 
@@ -193,7 +209,7 @@
                   <button class="btn btn-outline">Outline</button>
                   <button class="btn btn-outline btn-error">Outline error</button>
                   <button class="btn btn-ghost">Ghost</button>
-                  <a class="btn btn-link">Link <i class="ph ph-arrow-square-out"></i></a>
+                  <a class="btn btn-link"><span>Link</span> <i class="ph ph-arrow-square-out"></i></a>
                 </div>
               </div>
               <div class="space-y-3">
@@ -363,11 +379,11 @@
                 <ul><li><a>Workspace</a></li><li><a>Records</a></li><li>Billing export</li></ul>
               </div>
               <div class="join">
-                <button class="join-item btn btn-secondary btn-square" aria-label="Previous page"><i class="ph ph-arrow-left"></i></button>
-                <button class="join-item btn btn-secondary">1</button>
+                <button class="join-item btn btn-ghost btn-square" aria-label="Previous page"><i class="ph ph-caret-left"></i></button>
+                <button class="join-item btn btn-ghost">1</button>
                 <button class="join-item btn btn-active">2</button>
-                <button class="join-item btn btn-secondary">3</button>
-                <button class="join-item btn btn-secondary btn-square" aria-label="Next page"><i class="ph ph-arrow-right"></i></button>
+                <button class="join-item btn btn-ghost">3</button>
+                <button class="join-item btn btn-ghost btn-square" aria-label="Next page"><i class="ph ph-caret-right"></i></button>
               </div>
             </div>
           </section>
@@ -379,7 +395,7 @@
               <div class="space-y-3">
                 <p class="text-label">Dropdown</p>
                 <details class="dropdown dropdown-bottom">
-                  <summary class="btn btn-secondary">Actions <i class="ph ph-caret-down"></i></summary>
+                  <summary class="btn btn-outline">Actions <i class="ph ph-caret-down"></i></summary>
                   <ul class="dropdown-content menu bg-base-100 border-[1.5px] border-base-300 p-2 w-52 mt-1">
                     <li><a class="text-body">Rename</a></li>
                     <li><a class="menu-active text-body">Duplicate</a></li>
@@ -429,6 +445,187 @@
                   <div class="chat-bubble text-body">Summarize the latest activity.</div>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <!-- Stats -->
+          <section id="stats" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">Stats</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8">
+              <div class="stats bg-base-100 border-[1.5px] border-base-300">
+                <div class="stat">
+                  <div class="stat-title text-caption">Total records</div>
+                  <div class="stat-value text-h1">1,284</div>
+                  <div class="stat-desc text-caption text-success">12% this week</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-title text-caption">In review</div>
+                  <div class="stat-value text-h1">96</div>
+                  <div class="stat-desc text-caption text-error">4% this week</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-title text-caption">Resolved</div>
+                  <div class="stat-value text-h1">842</div>
+                  <div class="stat-desc text-caption">Updated just now</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- List -->
+          <section id="list" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">List</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8">
+              <ul class="list bg-base-100 border-[1.5px] border-base-300">
+                <li class="list-row">
+                  <div class="bg-base-200 w-10 h-10 flex items-center justify-center"><i class="ph ph-file-text text-xl"></i></div>
+                  <div class="list-col-grow">
+                    <div class="text-body">Billing export</div>
+                    <div class="text-caption opacity-80">Updated 2 hours ago</div>
+                  </div>
+                  <button class="btn btn-ghost btn-sm btn-square" aria-label="More"><i class="ph ph-dots-three text-xl"></i></button>
+                </li>
+                <li class="list-row">
+                  <div class="bg-base-200 w-10 h-10 flex items-center justify-center"><i class="ph ph-user text-xl"></i></div>
+                  <div class="list-col-grow">
+                    <div class="text-body">Member invited</div>
+                    <div class="text-caption opacity-80">Yesterday</div>
+                  </div>
+                  <button class="btn btn-ghost btn-sm btn-square" aria-label="More"><i class="ph ph-dots-three text-xl"></i></button>
+                </li>
+                <li class="list-row">
+                  <div class="bg-base-200 w-10 h-10 flex items-center justify-center"><i class="ph ph-check-circle text-xl"></i></div>
+                  <div class="list-col-grow">
+                    <div class="text-body">Task completed</div>
+                    <div class="text-caption opacity-80">Last week</div>
+                  </div>
+                  <button class="btn btn-ghost btn-sm btn-square" aria-label="More"><i class="ph ph-dots-three text-xl"></i></button>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Timeline -->
+          <section id="timeline" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">Timeline</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8">
+              <ul class="timeline timeline-vertical">
+                <li>
+                  <div class="timeline-middle"><span class="lz-dot"></span></div>
+                  <div class="timeline-end timeline-box text-body">
+                    <div class="text-caption opacity-80">09:24</div>
+                    Record created
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-middle"><span class="lz-dot"></span></div>
+                  <div class="timeline-end timeline-box text-body">
+                    <div class="text-caption opacity-80">11:02</div>
+                    Assigned to reviewer
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-middle"><span class="lz-dot"></span></div>
+                  <div class="timeline-end timeline-box text-body">
+                    <div class="text-caption opacity-80">14:47</div>
+                    Marked resolved
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Loading & skeleton -->
+          <section id="loading" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">Loading &amp; skeleton</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8 space-y-6">
+              <div class="space-y-3">
+                <p class="text-label">Spinner</p>
+                <div class="flex items-center gap-6">
+                  <span class="loading loading-spinner loading-sm"></span>
+                  <span class="loading loading-spinner"></span>
+                  <span class="loading loading-spinner loading-lg"></span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <p class="text-label">Progress</p>
+                <progress class="progress" value="64" max="100"></progress>
+              </div>
+              <div class="space-y-3">
+                <p class="text-label">Skeleton — placeholder while content loads</p>
+                <div class="flex items-center gap-4">
+                  <div class="skeleton w-10 h-10"></div>
+                  <div class="flex-1 space-y-2">
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- File input -->
+          <section id="fileinput" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">File input</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8 space-y-3">
+              <p class="text-label">File input</p>
+              <input type="file" class="file-input" />
+            </div>
+          </section>
+
+          <!-- Page header -->
+          <section id="page-header" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">Page header</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8">
+              <div class="bg-base-100 border-[1.5px] border-base-300 p-6 flex items-start justify-between gap-6">
+                <div class="space-y-2">
+                  <div class="breadcrumbs text-sm">
+                    <ul>
+                      <li><a class="opacity-80">Workspace</a></li>
+                      <li>Records</li>
+                    </ul>
+                  </div>
+                  <h1 class="text-h1">Records</h1>
+                  <p class="text-body opacity-80">Review and manage incoming records.</p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                  <button class="btn btn-secondary"><i class="ph ph-export text-xl"></i>Export</button>
+                  <button class="btn btn-primary"><i class="ph ph-plus text-xl"></i>New record</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <section id="footer-demo" class="space-y-4 scroll-mt-6">
+            <h2 class="text-h1">Footer</h2>
+            <div class="bg-base-200 border-[1.5px] border-base-300 p-8">
+              <footer class="bg-base-100 border-[1.5px] border-base-300 p-6 flex items-start justify-between gap-12">
+                <div class="flex items-start gap-4">
+                  <svg class="text-base-content shrink-0" width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M15.2388 21.1839C15.2388 21.1839 13.4403 25.2556 8.82623 25.2556C4.21217 25.2556 2.41367 21.1843 2.41367 21.1839L0 22.47C0 22.47 2.47421 28 8.82623 28C15.1782 28 17.6525 22.47 17.6525 22.47L15.2388 21.1839Z" fill="currentColor"/>
+                    <path d="M11.2679 16.0186H5.04624V18.4086H11.2679V16.0186Z" fill="currentColor"/>
+                    <path d="M7.63873 6.68851H5.04624V15.3219H7.63873V6.68851Z" fill="currentColor"/>
+                    <path d="M15.4418 0C12.9425 0 10.8836 1.52041 10.8836 4.70383C10.8836 7.32575 12.2938 9.46424 15.4418 9.46424C18.9345 9.46424 20 6.91947 20 4.70383C20 1.80233 18.2532 0 15.4418 0ZM15.4418 7.14528C14.1188 7.14528 13.4761 6.34674 13.4761 4.70383C13.4761 3.06093 14.1374 2.34748 15.4418 2.34748C16.6559 2.34748 17.4219 3.0067 17.4219 4.70383C17.4219 6.34674 16.7742 7.14528 15.4418 7.14528Z" fill="currentColor"/>
+                  </svg>
+                  <div class="space-y-1">
+                    <p class="text-body">Lahzo Internal Design System</p>
+                    <p class="text-caption opacity-80">Version 1.1 · desktop internal tools</p>
+                  </div>
+                </div>
+                <div class="flex gap-12">
+                  <nav class="flex flex-col gap-2">
+                    <h6 class="text-label">Product</h6>
+                    <a class="btn-link">Overview</a>
+                    <a class="btn-link">Changelog</a>
+                  </nav>
+                  <nav class="flex flex-col gap-2">
+                    <h6 class="text-label">Resources</h6>
+                    <a class="btn-link">Guidelines</a>
+                    <a class="btn-link">Components</a>
+                  </nav>
+                </div>
+              </footer>
             </div>
           </section>
 
@@ -498,6 +695,41 @@
       });
     }, { root: main, rootMargin: '0px 0px -70% 0px', threshold: 0 });
     sections.forEach(s => s && spy.observe(s));
+
+    // Theme toggle (Light default / Dark) + live hex labels
+    (function () {
+      const LIGHT = 'Lahzo — Light Theme';
+      const DARK = 'Lahzo — Dark Theme';
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const icon = btn.querySelector('i');
+      const normHex = (v) => {
+        v = (v || '').trim();
+        const m = v.match(/^#([0-9a-fA-F]{3})$/);
+        if (m) v = '#' + m[1].split('').map(c => c + c).join('');
+        return v.toUpperCase();
+      };
+      const syncHex = () => {
+        const cs = getComputedStyle(root);
+        document.querySelectorAll('[data-hex]').forEach(el => {
+          const val = cs.getPropertyValue('--color-' + el.getAttribute('data-hex'));
+          if (val) el.textContent = normHex(val);
+        });
+      };
+      const apply = (name) => {
+        root.setAttribute('data-theme', name);
+        const dark = name === DARK;
+        icon.className = 'ph ' + (dark ? 'ph-sun' : 'ph-moon') + ' text-xl';
+        btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        try { localStorage.setItem('lahzo-theme', name); } catch (e) {}
+        syncHex();
+      };
+      let saved = null;
+      try { saved = localStorage.getItem('lahzo-theme'); } catch (e) {}
+      apply(saved === DARK ? DARK : LIGHT);
+      btn.addEventListener('click', () =>
+        apply(root.getAttribute('data-theme') === DARK ? LIGHT : DARK));
+    })();
   </script>
 </body>
 </html>
