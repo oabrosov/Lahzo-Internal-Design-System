@@ -1,0 +1,57 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+Shows where the user is in a hierarchy and lets them step back up it. Pass an `items` array;
+the **last item** (or any item without an `href`) renders as the current page.
+
+## When to use
+
+- ✅ At the top of a detail/page view that has a parent chain.
+- ❌ Not for primary navigation — that's the Navbar / Menu.
+
+## Anatomy
+
+`nav[aria-label="Breadcrumb"] → ol → li → (a | span)`, with a `/` separator between crumbs and
+an optional leading 16px icon per crumb.
+
+## Default
+
+<Canvas of={BreadcrumbsStories.Default} />
+
+## With an icon
+
+<Canvas of={BreadcrumbsStories.WithIcon} />
+
+## Long trails collapse
+
+More than 4 items collapse to **first · … · last**.
+
+<Canvas of={BreadcrumbsStories.Collapsed} />
+
+## Props
+
+- **`items`** — `{ label: string; href?: string; icon?: PhosphorIcon }[]`. Last item (or any
+  without `href`) = current page. **Icons are all-or-nothing** — if any item has an `icon`,
+  every item must (a dev-mode warning flags mixed usage).
+- **`className`** — merged onto the `<nav>`.
+
+## States & typography (from Figma)
+
+- Link crumb: `base-content` @ 0.8, no underline → **underline on hover**.
+- Current page: `base-content` @ full, non-link `<span aria-current="page">`.
+- Separator `/`: 12px, `base-content` @ 0.5. Labels use the `Body` style (14px).
+
+## Accessibility
+
+- Wrapped in `<nav aria-label="Breadcrumb">`; the current page is `aria-current="page"` and not
+  a link; previous crumbs are real `<a>` links. The collapse `…` is decorative (`aria-hidden`).
+
+## Do / Don't
+
+- ✅ Keep labels short and sentence-case.
+- ✅ Icons are all-or-nothing — give every crumb an icon, or none.
+- ❌ No ALL-CAPS, no custom separators, no mixing iconed and icon-less crumbs.

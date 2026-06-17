@@ -1,0 +1,202 @@
+{
+  "name": "lahzo-internal-design-system",
+  "version": "0.1.0",
+  "description": "Component registry for the Lahzo React library: per-component tier, daisyUI base, and build status. Design scales + token names live in reference/tokens.json.",
+  "foundation": {
+    "Icon": {
+      "status": "built",
+      "since": "0.1.0",
+      "source": "src/components/ui/Icon/Icon.tsx"
+    },
+    "LahzoWordmark": {
+      "status": "built",
+      "since": "0.1.0",
+      "source": "src/components/ui/Logo/Logo.tsx"
+    },
+    "ThemeProvider": {
+      "status": "built",
+      "since": "0.1.0",
+      "source": "src/theme/ThemeProvider.tsx"
+    },
+    "ThemeToggle": {
+      "status": "built",
+      "since": "0.1.0",
+      "source": "src/theme/ThemeToggle.tsx"
+    }
+  },
+  "components": {
+    "Button": {
+      "tier": "canonical",
+      "daisyui": "btn",
+      "status": "built",
+      "since": "0.1.0",
+      "props": [
+        "variant",
+        "size",
+        "leftIcon",
+        "rightIcon",
+        "loading",
+        "square",
+        "block"
+      ],
+      "source": "src/components/ui/Button/Button.tsx"
+    },
+    "Input": {
+      "tier": "essential",
+      "daisyui": "input",
+      "status": "proposed"
+    },
+    "Select": {
+      "tier": "essential",
+      "daisyui": "select",
+      "status": "proposed"
+    },
+    "Textarea": {
+      "tier": "essential",
+      "daisyui": "textarea",
+      "status": "proposed"
+    },
+    "Card": {
+      "tier": "essential",
+      "daisyui": "card",
+      "status": "proposed"
+    },
+    "Badge": {
+      "tier": "essential",
+      "daisyui": "badge",
+      "status": "proposed"
+    },
+    "Avatar": {
+      "tier": "essential",
+      "daisyui": "avatar",
+      "status": "proposed"
+    },
+    "Tooltip": {
+      "tier": "essential",
+      "daisyui": "tooltip",
+      "status": "proposed"
+    },
+    "Footer": {
+      "tier": "essential",
+      "daisyui": "custom",
+      "status": "proposed"
+    },
+    "Checkbox": {
+      "tier": "canonical",
+      "daisyui": "checkbox",
+      "status": "proposed"
+    },
+    "Radio": {
+      "tier": "canonical",
+      "daisyui": "radio",
+      "status": "proposed"
+    },
+    "Toggle": {
+      "tier": "canonical",
+      "daisyui": "toggle",
+      "status": "proposed"
+    },
+    "Range": {
+      "tier": "canonical",
+      "daisyui": "range",
+      "status": "proposed"
+    },
+    "Tabs": {
+      "tier": "canonical",
+      "daisyui": "tabs",
+      "status": "proposed"
+    },
+    "Breadcrumbs": {
+      "tier": "canonical",
+      "daisyui": "breadcrumbs",
+      "status": "built",
+      "since": "0.1.0",
+      "source": "src/components/ui/Breadcrumbs/Breadcrumbs.tsx"
+    },
+    "Pagination": {
+      "tier": "canonical",
+      "daisyui": "join",
+      "status": "proposed"
+    },
+    "Menu": {
+      "tier": "canonical",
+      "daisyui": "menu",
+      "status": "proposed"
+    },
+    "Dropdown": {
+      "tier": "canonical",
+      "daisyui": "dropdown",
+      "status": "proposed"
+    },
+    "Navbar": {
+      "tier": "canonical",
+      "daisyui": "custom",
+      "status": "proposed"
+    },
+    "Alert": {
+      "tier": "canonical",
+      "daisyui": "alert",
+      "status": "proposed"
+    },
+    "Toast": {
+      "tier": "canonical",
+      "daisyui": "toast",
+      "status": "proposed"
+    },
+    "Modal": {
+      "tier": "canonical",
+      "daisyui": "modal",
+      "status": "proposed"
+    },
+    "Table": {
+      "tier": "canonical",
+      "daisyui": "table",
+      "status": "proposed"
+    },
+    "ChatBubble": {
+      "tier": "canonical",
+      "daisyui": "chat",
+      "status": "proposed"
+    },
+    "Drawer": {
+      "tier": "tier-3",
+      "daisyui": "drawer",
+      "status": "proposed"
+    },
+    "Accordion": {
+      "tier": "tier-3",
+      "daisyui": "collapse",
+      "status": "proposed"
+    },
+    "Stat": {
+      "tier": "tier-3",
+      "daisyui": "stat",
+      "status": "proposed"
+    },
+    "Progress": {
+      "tier": "tier-3",
+      "daisyui": "progress",
+      "status": "proposed"
+    },
+    "Loading": {
+      "tier": "tier-3",
+      "daisyui": "loading",
+      "status": "proposed"
+    },
+    "Skeleton": {
+      "tier": "tier-3",
+      "daisyui": "skeleton",
+      "status": "proposed"
+    },
+    "Steps": {
+      "tier": "tier-3",
+      "daisyui": "steps",
+      "status": "proposed"
+    },
+    "FileInput": {
+      "tier": "tier-3",
+      "daisyui": "file-input",
+      "status": "proposed"
+    }
+  }
+}

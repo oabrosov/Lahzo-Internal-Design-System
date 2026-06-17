@@ -1,0 +1,81 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Triggers an action. The default is **secondary / md** — reach for it for almost every
+labeled action. Use exactly **one `primary` button per surface** (the single main action).
+
+## When to use
+
+- ✅ A labeled action: Save, Cancel, Apply, Export.
+- ✅ In a row: one `primary` + up to two `secondary`; make every further button `ghost`.
+- ✅ `ghost` + `square` for icon-only utilities (close, copy, kebab) — always with an `aria-label`.
+- ❌ Don't use `success` / `error` for everyday actions — reserved for destructive / success confirmations.
+- ❌ Don't reach for `ghost` while a `secondary` slot is still free (primary + two secondary).
+- ❌ Inline text links use the `.btn-link` style on an `<a>`, not a Button.
+
+## Hierarchy — pick by emphasis
+
+| Variant | Use for |
+|---------|---------|
+| `primary` | The **single** main action on a surface (Save, Create). One per surface. |
+| `secondary` | Other labeled actions (Cancel, Filter, Back) — up to **two** alongside the primary. |
+| `ghost` | Icon-only utilities (close, copy, kebab), **and** any action beyond the primary + two secondary in a row. |
+| `success` / `error` | Edge cases only — genuine success / destructive confirmations. |
+
+**Rows of buttons:** at most **1 `primary` + 2 `secondary`** prominent buttons; **everything
+after that is `ghost`**. A four-action toolbar reads primary · secondary · secondary · ghost.
+**Icon-only actions** are always `ghost` + `square` with an `aria-label`.
+
+## Anatomy
+
+`[ optional leftIcon ] label [ optional rightIcon ]` — or an icon-only square button.
+While `loading`, a spinner replaces the leading icon and the button is disabled.
+
+## Variants
+
+<Canvas of={ButtonStories.Variants} />
+
+## Sizes
+
+Heights follow the control scale: **xs 24 · sm 32 · md 40 (default) · lg 48**.
+
+<Canvas of={ButtonStories.Sizes} />
+
+## States
+
+`default → hover (10% darker) → active (20% darker) → focus (ring) → disabled (50%)` come from
+daisyUI + the theme; `loading` shows a spinner and disables the button. Don't override state styles.
+
+## With icons
+
+Icons are Phosphor components passed to `leftIcon` / `rightIcon`; they inherit the button's
+text color and size with the control (16px in xs/sm, 20px in md/lg).
+
+<Canvas of={ButtonStories.WithIcons} />
+
+## Props
+
+<Controls of={ButtonStories.Playground} />
+
+## Banned
+
+`btn-outline` (outline buttons aren't part of this system), `btn-neutral`, solid `btn-accent` /
+`btn-info` / `btn-warning`, and `btn-soft` / `btn-dash`. The design-token linter enforces these.
+(`.btn-link` is the link text-style for `<a>` elements — it is **not** a Button variant.)
+
+## Accessibility
+
+- Defaults to `type="button"` so it never submits a form unexpectedly.
+- `loading` sets `disabled` and `aria-busy`.
+- Icon-only buttons (`square`) **require** an `aria-label`.
+- Focus ring and hover/active states come from the theme — don't override them.
+
+## Do / Don't
+
+- ✅ One `primary` per surface; everything else `secondary`.
+- ✅ Sentence-case labels ("Save changes", not "SAVE CHANGES").
+- ❌ No custom colors or radii — variants map to theme tokens only.
